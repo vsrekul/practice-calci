@@ -7,7 +7,7 @@ pipeline{
         appImage = ''
     }
     stages{
-        stage('checkout'){
+        stage('checkout scm'){
             git branch: 'main', url: 'https://github.com/vsrekul/practice-calci.git'
         }
     }
