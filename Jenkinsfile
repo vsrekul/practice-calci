@@ -35,7 +35,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'dockerhub-credentials', url: 'https://github.com/vsrekul/practice-calci.git') {
+                    withDockerRegistry(credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/') {
                         appImage.push()
                     }
                 }
