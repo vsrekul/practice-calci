@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.9-slim
 
 # Create a directory for the app
 RUN mkdir /app
@@ -9,9 +9,10 @@ WORKDIR /app
 # Copy all files to the working directory
 COPY . .
 
-EXPOSE 80
-# Install dependencies from requirements.txt
-RUN pip install -r requirements.txt
+EXPOSE 5000
 
-# Specify the command to run the application
-CMD ["python", "app.py"]
+# Define environment variable
+ENV FLASK_ENV=production
+
+# Run the application
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
