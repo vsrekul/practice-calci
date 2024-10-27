@@ -1,3 +1,7 @@
-Flask==2.1.0
 Werkzeug==2.0.3
+Flask==2.3.3
 Gunicorn==20.1.0
+Flask-SQLAlchemy==2.5.1       # If using SQLAlchemy for database
+Flask-Migrate==3.1.0          # If using Flask-Migrate for database migrations
+Flask-Cors==3.0.10             # If using CORS
+requests==2.28.1               # If making HTTP requests

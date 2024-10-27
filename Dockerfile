@@ -11,6 +11,8 @@ COPY . .
 
 EXPOSE 5000
 
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Define environment variable
 ENV FLASK_ENV=production
 
