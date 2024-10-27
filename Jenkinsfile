@@ -8,23 +8,31 @@ pipeline{
     }
     stages{
         stage('checkout scm'){
-            git branch: 'main', url: 'https://github.com/vsrekul/practice-calci.git'
+            steps{
+                git branch: 'main', url: 'https://github.com/vsrekul/practice-calci.git'
+            }           
         }
     }
     stages{
         stage('build'){
-            appImage = docker.build('my-app:latest')
+            steps{
+                appImage = docker.build('my-app:latest')                
+            }            
         }
     }
     stages{
         stage('tag'){
-            appImage.tag("vsrekul/my-app:${params.VERSION}")
+            steps{
+                appImage.tag("vsrekul/my-app:${params.VERSION}")
+            }            
         }
     }
     stages{
         stage('tag'){
-            withDockerRegistry(credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/') {
-                appImage.push("vsrekul/my-app:${params.VERSION}")
+            steps{
+                withDockerRegistry(credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/') {
+                appImage.push("vsrekul/my-app:${params.VERSION}")                
+                }            
             }            
         }
     }
