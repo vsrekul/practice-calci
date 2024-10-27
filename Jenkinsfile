@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    appImage = docker.build('my-app:latest')
+                    appImage = docker.build("vsrekul/my-app:${params.VERSION}")
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Tag') {
             steps {
                 script {
-                    appImage.tag("vsrekul/my-app:${params.VERSION}")
+                   sh "echo tagging"
                 }
             }
         }
