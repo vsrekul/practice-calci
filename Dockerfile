@@ -9,6 +9,7 @@ WORKDIR /app
 # Copy all files to the working directory
 COPY . .
 
+EXPOSE 80
 # Install dependencies from requirements.txt
 RUN pip install -r requirements.txt
 
